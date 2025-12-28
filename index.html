@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="BodyTrack - Software de bioimpedância e planos alimentares para nutricionistas. Transforme dados em resultados." />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <title>BodyTrack | Software para Nutricionistas</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">
+        <img src="/logo.png" alt="BodyTrack" style="height: 40px;">
+      </div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="#hero">Início</a></li>
+          <li><a href="#showcase">App</a></li>
+          <li><a href="#features">Recursos</a></li>
+          <li><a href="#benefits">Benefícios</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions" style="display: flex; gap: 1rem;">
+        <a href="#login" class="btn btn-secondary" style="padding: 10px 24px; font-size: 0.9rem;">Login</a>
+        <a href="#signup" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">Cadastre-se</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="hero section-padding">
+      <div class="container hero-container">
+        <div class="hero-content fade-in">
+          <h1>Transforme dados de bioimpedância em <span style="color: var(--color-secondary)">planos alimentares</span>
+            precisos em minutos.</h1>
+          <p>O BodyTrack automatiza cálculos complexos, gera relatórios visuais e ajuda você a focar no que importa: a
+            saúde do seu paciente.</p>
+          <div class="hero-cta">
+            <a href="#signup" class="btn btn-primary">Criar conta grátis</a>
+          </div>
+        </div>
+        <div class="hero-image fade-in" style="animation-delay: 0.2s;">
+          <!-- Placeholder for Hero Image/Illustration - using CSS background for section usually, or side image -->
+          <!-- Let's use a side image layout for modern feel -->
+          <img src="aplicativo_app_para_area_da_nutricao.webp" alt="Preview do Aplicativo BodyTrack"
+            style="border-radius: var(--border-radius); box-shadow: var(--shadow-xl);">
+        </div>
+      </div>
+    </section>
+
+    <!-- App Showcase -->
+    <section id="showcase" class="showcase section-padding"
+      style="background-color: var(--color-light-bg); position: relative; overflow: hidden;">
+      <!-- Decorative background blur -->
+      <div class="decoration-blur"></div>
+
+      <div class="container" style="position: relative; z-index: 1;">
+        <div class="section-header text-center fade-in">
+          <span class="badge-pill">Experiência Premium</span>
+          <h2>A Interface que <span class="text-gradient">Simplifica</span> sua Rotina</h2>
+          <p style="max-width: 600px; margin: 0 auto; color: #666; font-size: 1.1rem;">
+            Design intuitivo pensado para nutricionistas exigentes. <br>
+            Visualize cada detalhe do progresso do seu paciente em um painel unificado.
+          </p>
+        </div>
+
+        <div class="app-slider-container fade-in" style="animation-delay: 0.3s; margin-top: 3rem;">
+          <div class="app-slider">
+            <!-- Mockup 1 -->
+            <div class="app-slide">
+              <img src="/dashboard intuitivo.webp">
+              <p class="slide-caption">Dashboard Geral</p>
+            </div>
+            <!-- Mockup 2 -->
+            <div class="app-slide">
+              <img src="/prontuario.webp" alt="Prontuário">
+              <p class="slide-caption">Prontuário</p>
+            </div>
+            <!-- Mockup 3 -->
+            <div class="app-slide">
+              <img src="/bioimpedancia.webp">
+              <p class="slide-caption">Bioimpedância</p>
+            </div>
+            <!-- Mockup 4 -->
+            <div class="app-slide">
+              <img src="/relatorio detalhado.webp" alt="Gestão de Metas">
+              <p class="slide-caption">Relatório Detalhado</p>
+            </div>
+            <!-- Mockup 5 -->
+            <div class="app-slide">
+              <img src="/analise_grafica.webp">
+              <p class="slide-caption">Análise Gráfica</p>
+            </div>
+            <!-- Mockup 6 -->
+            <div class="app-slide">
+              <img src="/rotina_alimentar.webp">
+              <p class="slide-caption">Rotina Alimentar</p>
+            </div>
+            <!-- Mockup 7 -->
+            <div class="app-slide">
+              <img src="/plano_de_exercicios.webp">
+              <p class="slide-caption">Plano de Exercícios</p>
+            </div>
+            <!-- Mockup 8 -->
+            <div class="app-slide">
+              <img src="/plano_de_metas.webp">
+              <p class="slide-caption">Plano de Metas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Report Features -->
+    <section id="report-features" class="report-features section-padding">
+      <div class="container">
+        <div class="section-header text-center fade-in">
+          <h2>Relatórios <span style="color: var(--color-secondary);">Detalhados</span></h2>
+          <p style="max-width: 600px; margin: 0 auto; color: #666; margin-bottom: 3rem;">
+            Análises completas para um diagnóstico preciso.
+          </p>
+        </div>
+
+        <div class="report-grid">
+          <!-- Card 1: Análise dos Indicadores -->
+          <div class="report-card fade-in" style="animation-delay: 0.2s;">
+            <h3>Análise dos Indicadores</h3>
+            <ul class="report-list">
+              <li>RCE (Relação Cintura-Estatura)</li>
+              <li>WHR (Relação Cintura-Quadril)</li>
+              <li>BRI (Índice de Redondeza Corporal)</li>
+            </ul>
+          </div>
+
+          <!-- Card 2: Análise Integrada de Risco -->
+          <div class="report-card fade-in" style="animation-delay: 0.3s;">
+            <h3>Análise Integrada de Risco</h3>
+            <ul class="report-list">
+              <li>IMC (Índice de Massa Corporal)</li>
+              <li>Gordura Corporal (%)</li>
+              <li>Massa Muscular (%)</li>
+              <li>Gordura Visceral</li>
+              <li>Idade Corporal</li>
+              <li>RCE</li>
+              <li>WHR</li>
+              <li>BRI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Differentiators -->
+    <section id="features" class="features section-padding">
+      <div class="container">
+        <div class="section-header text-center fade-in">
+          <h2>Por que escolher o <span style="color: var(--color-primary);">BodyTrack?</span></h2>
+          <p style="max-width: 600px; margin: 0 auto; color: #666; margin-bottom: 3rem;">Ferramentas exclusivas para
+            elevar o nível do seu atendimento.</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Feature 1 -->
+          <div class="feature-card fade-in" style="animation-delay: 0.2s;">
+            <div class="icon-box">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                </path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <h3>Bioimpedância Digital</h3>
+            <p>Registros precisos e histórico visual da evolução corporal do paciente.</p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="feature-card fade-in" style="animation-delay: 0.3s;">
+            <div class="icon-box">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+            </div>
+            <h3>Adequação Inteligente</h3>
+            <p>Cálculo automático de macros e sugestões baseadas no perfil metabólico.</p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feature-card fade-in" style="animation-delay: 0.4s;">
+            <div class="icon-box">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                <path d="M2 8h16v9a4 4 0 0 1-7.58 1.88"></path>
+                <path d="M6 8v9a4 4 0 0 1-3.6 2.4"></path>
+              </svg>
+            </div>
+            <h3>Prescrição de Exercícios</h3>
+            <p>Conecte planejamento alimentar e atividade física em um só lugar.</p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="feature-card fade-in" style="animation-delay: 0.5s;">
+            <div class="icon-box">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h3>Gestão de Metas</h3>
+            <p>Defina objetivos claros e acompanhe o progresso em tempo real.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lead Magnet -->
+    <section id="lead-magnet" class="lead-magnet section-padding text-center">
+      <div class="container">
+        <div class="lead-magnet-box fade-in">
+          <div class="magnet-content">
+            <h2>O diferencial que seus pacientes <span style="color: var(--color-secondary);">amam</span> e esperam</h2>
+            <p>Entregue mais do que uma dieta. Entregue uma experiência visual completa que justifica o valor da sua
+              consulta.</p>
+            <a href="/relatorio_completo_namio_evangelista.pdf" target="_blank" class="btn btn-primary"
+              style="font-size: 1.1rem; padding: 16px 40px; margin-top: 1rem;">Visualizar Exemplo de Relatório
+              Completo</a>
+          </div>
+          <div class="magnet-decoration"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section id="benefits" class="benefits section-padding" style="background-color: var(--color-light-bg);">
+      <div class="container">
+        <div class="section-header text-center fade-in">
+          <h2>Você no <span style="color: var(--color-primary);">Controle</span> do Sucesso</h2>
+        </div>
+
+        <div class="benefits-list">
+          <div class="benefit-item fade-in">
+            <span class="check-icon">✓</span>
+            <div>
+              <h4>Fidelização Comprovada</h4>
+              <p>Pacientes que entendem o progresso aderem ao tratamento por 3x mais tempo.</p>
+            </div>
+          </div>
+          <div class="benefit-item fade-in">
+            <span class="check-icon">✓</span>
+            <div>
+              <h4>Autoridade Profissional</h4>
+              <p>Posicione-se como referência utilizando tecnologia de ponta.</p>
+            </div>
+          </div>
+          <div class="benefit-item fade-in">
+            <span class="check-icon">✓</span>
+            <div>
+              <h4>Economia de Tempo</h4>
+              <p>Reduza em até 50% o tempo gasto em cálculos manuais e formatação de planilhas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing section-padding" style="background-color: var(--color-light-bg);">
+      <div class="container">
+        <div class="section-header text-center fade-in">
+          <h2>Escolha o Plano Ideal</h2>
+          <p>Comece gratuitamente e faça o upgrade quando precisar.</p>
+        </div>
+
+        <!-- Billing Toggle -->
+        <div class="pricing-toggle fade-in">
+          <span class="billing-label">Mensal</span>
+          <label class="switch">
+            <input type="checkbox" id="billing-switch">
+            <span class="slider round"></span>
+          </label>
+          <span class="billing-label">Anual <span class="discount-badge">-20%</span></span>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Monthly Plan -->
+          <div class="pricing-card fade-in">
+            <div class="card-header">
+              <h3>Profissional</h3>
+              <p>Para nutricionistas em crescimento</p>
+            </div>
+            <div class="card-price">
+              <span class="currency">R$</span>
+              <span class="amount monthly-price">97</span>
+              <span class="amount annual-price" style="display: none;">79</span>
+              <span class="period">/mês</span>
+            </div>
+            <p class="billing-info annual-info"
+              style="display: none; color: var(--color-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Cobrado R$
+              948 anualmente</p>
+            <ul class="feature-list">
+              <li><i class="check-icon">✓</i> Pacientes ilimitados</li>
+              <li><i class="check-icon">✓</i> App do paciente (iOS/Android)</li>
+              <li><i class="check-icon">✓</i> Prescrição e cálculos automáticos</li>
+              <li><i class="check-icon">✓</i> Chat direto</li>
+              <li><i class="check-icon">✓</i> Personalização de marca</li>
+            </ul>
+            <a href="#signup" class="btn btn-outline-primary full-width">Começar 14 dias grátis</a>
+          </div>
+
+          <!-- Annual Plan (Highlighted) -->
+          <div class="pricing-card popular fade-in" style="animation-delay: 0.2s;">
+            <div class="popular-badge">Melhor Escolha</div>
+            <div class="card-header">
+              <h3>Expert</h3>
+              <p>Para clínicas e alta performance</p>
+            </div>
+            <div class="card-price">
+              <span class="currency">R$</span>
+              <span class="amount monthly-price">147</span>
+              <span class="amount annual-price" style="display: none;">117</span>
+              <span class="period">/mês</span>
+            </div>
+            <p class="billing-info annual-info"
+              style="display: none; color: var(--color-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Cobrado R$
+              1.404 anualmente</p>
+            <ul class="feature-list">
+              <li><i class="check-icon">✓</i> <b>Tudo do Profissional</b></li>
+              <li><i class="check-icon">✓</i> Múltiplos nutricionistas (até 3)</li>
+              <li><i class="check-icon">✓</i> Gestão financeira completa</li>
+              <li><i class="check-icon">✓</i> Telemedicina integrada</li>
+              <li><i class="check-icon">✓</i> Suporte prioritário via WhatsApp</li>
+            </ul>
+            <a href="#signup" class="btn btn-primary full-width">Começar 14 dias grátis</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <img src="/logo.png" alt="BodyTrack" style="height: 32px; margin-bottom: 1rem;">
+        <p>Tecnologia a serviço da nutrição.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Links Úteis</h4>
+        <ul>
+          <li><a href="#hero">Início</a></li>
+          <li><a href="#features">Recursos</a></li>
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <!-- Social placeholers -->
+      </div>
+    </div>
+    <div class="footer-bottom text-center">
+      <p>&copy; 2025 BodyTrack. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/5585996277707" target="_blank" class="whatsapp-btn" aria-label="Fale conosco no WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="#ffffff">
+      <path
+        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+    </svg>
+  </a>
+
+  <script type="module" src="./main.js"></script>
+</body>
+
+</html>
