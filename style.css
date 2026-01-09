@@ -94,11 +94,7 @@ button {
 
 .btn-primary {
     background-color: var(--color-secondary);
-    /* Action color */
-    color: var(--color-primary);
-    /* Contrast */
     color: #fff;
-    background-color: var(--color-secondary);
 }
 
 .btn-primary:hover {
@@ -362,6 +358,70 @@ button {
 /* Tablet/Desktop tweaks for slider */
 /* Tablet/Desktop tweaks for slider removed as 600x800 is now global */
 
+/* Data Intelligence Section */
+.data-intelligence-section {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    background-image: url('/mulher preparando seu shake.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.data-intelligence-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(39, 73, 139, 0.85) 0%, rgba(30, 58, 117, 0.9) 100%);
+    z-index: 1;
+}
+
+.data-intelligence-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 4rem 2rem;
+    color: #fff;
+}
+
+.data-intelligence-content h2 {
+    font-size: 2.75rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+.data-intelligence-content p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    opacity: 0.95;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .data-intelligence-section {
+        min-height: 400px;
+        background-attachment: scroll;
+    }
+
+    .data-intelligence-content h2 {
+        font-size: 2rem;
+    }
+
+    .data-intelligence-content p {
+        font-size: 1rem;
+    }
+}
+
 /* Report Features Section */
 .report-features {
     background-color: #fff;
@@ -474,26 +534,28 @@ button {
 }
 
 /* Lead Magnet */
+.lead-magnet {
+    padding: 0;
+}
+
+.lead-magnet .container {
+    max-width: 100%;
+    padding: 0;
+}
+
 .lead-magnet-box {
     background: linear-gradient(135deg, #1e3a75 0%, var(--color-primary) 100%);
-    border-radius: 20px;
+    border-radius: 0;
     padding: 4rem 2rem;
-    margin: 2rem 0;
+    margin: 0;
     color: #fff;
     position: relative;
     overflow: hidden;
-    box-shadow: var(--shadow-lg);
+    box-shadow: none;
 }
 
 .lead-magnet-box::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(163, 202, 40, 0.2) 0%, transparent 60%);
-    animation: pulse 10s infinite linear;
+    display: none;
 }
 
 .lead-magnet-box h2 {
@@ -830,5 +892,62 @@ input:checked+.slider:before {
 
 .full-width {
     width: 100%;
-    text-align: center;
+}
+
+/* Pricing Grid 4 columns */
+.pricing-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+    .pricing-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .pricing-grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Infinity Plan Styles */
+.pricing-card.infinity {
+    border: 2px solid #d4af37;
+    background: linear-gradient(145deg, #fff 0%, #fffef5 100%);
+}
+
+.pricing-card.infinity:hover {
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+}
+
+.infinity-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #d4af37 0%, #f0d078 100%);
+    color: #1a1a1a;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-infinity {
+    background: linear-gradient(135deg, #d4af37 0%, #c9a227 100%);
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+.btn-infinity:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+    filter: brightness(1.1);
 }

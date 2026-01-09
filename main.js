@@ -72,109 +72,132 @@ document.head.appendChild(style);
 
 // Infinite Carousel Logic
 const slider = document.querySelector('.app-slider');
-// Get original slides
-const originalSlides = Array.from(document.querySelectorAll('.app-slide'));
-const originalCount = originalSlides.length;
+if (slider) {
+  const originalSlides = Array.from(document.querySelectorAll('.app-slide'));
+  const originalCount = originalSlides.length;
 
-// Clone ALL slides and append them to ensure we have enough buffer
-originalSlides.forEach(slide => {
-  const clone = slide.cloneNode(true);
-  clone.classList.add('clone');
-  slider.appendChild(clone);
-});
+  // Clone slides: prepend and append for seamless infinite loop
+  // Append clones at the end
+  originalSlides.forEach(slide => {
+    const clone = slide.cloneNode(true);
+    clone.classList.add('clone');
+    slider.appendChild(clone);
+  });
 
-// Re-query all slides
-let allSlides = document.querySelectorAll('.app-slide');
-let currentSlide = 0;
-const intervalTime = 2500; // Increased slightly for better UX
-let autoScrollInterval;
-let isTransitioning = false;
+  // Prepend clones at the beginning
+  originalSlides.slice().reverse().forEach(slide => {
+    const clone = slide.cloneNode(true);
+    clone.classList.add('clone');
+    slider.insertBefore(clone, slider.firstChild);
+  });
 
-function getCenterPosition(slide) {
-  if (!slide) return 0;
-  return slide.offsetLeft - (slider.clientWidth / 2) + (slide.clientWidth / 2);
-}
+  // Re-query all slides after cloning
+  let allSlides = document.querySelectorAll('.app-slide');
+  const totalSlides = allSlides.length;
 
-function highlightCenterSlide() {
-  const sliderCenter = slider.scrollLeft + slider.clientWidth / 2;
-  let closestSlide = null;
-  let minDiff = Infinity;
+  // Start at the first "real" slide (after prepended clones)
+  let currentIndex = originalCount;
+  const intervalTime = 2500;
+  let autoScrollInterval;
+  let isTransitioning = false;
 
-  allSlides.forEach((slide) => {
-    const slideCenter = slide.offsetLeft + slide.clientWidth / 2;
-    const diff = Math.abs(sliderCenter - slideCenter);
+  function getSlidePosition(index) {
+    const slide = allSlides[index];
+    if (!slide) return 0;
+    return slide.offsetLeft - (slider.clientWidth / 2) + (slide.clientWidth / 2);
+  }
 
-    if (diff < minDiff) {
-      minDiff = diff;
-      closestSlide = slide;
+  function highlightCenterSlide() {
+    const sliderCenter = slider.scrollLeft + slider.clientWidth / 2;
+    let closestSlide = null;
+    let minDiff = Infinity;
+
+    allSlides.forEach((slide) => {
+      const slideCenter = slide.offsetLeft + slide.clientWidth / 2;
+      const diff = Math.abs(sliderCenter - slideCenter);
+
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestSlide = slide;
+      }
+    });
+
+    allSlides.forEach(s => s.classList.remove('active'));
+    if (closestSlide) {
+      closestSlide.classList.add('active');
     }
-  });
-
-  allSlides.forEach(s => s.classList.remove('active'));
-  if (closestSlide) {
-    closestSlide.classList.add('active');
-  }
-}
-
-// Initial Highlight
-setTimeout(highlightCenterSlide, 500);
-
-// Sync active class on scroll
-slider.addEventListener('scroll', highlightCenterSlide);
-
-function nextSlide() {
-  if (isTransitioning) return;
-  isTransitioning = true;
-
-  currentSlide++;
-
-  // Smooth scroll to next
-  const targetSlide = allSlides[currentSlide];
-
-  // Check if we need to loop back BEFORE scrolling if we are at the end
-  // But for smooth "infinite" feel, we scroll to clone, THEN jump back.
-
-  if (currentSlide >= allSlides.length) {
-    // Safety reset if somehow out of bounds
-    currentSlide = 0;
   }
 
-  slider.scrollTo({
-    left: getCenterPosition(targetSlide),
-    behavior: 'smooth'
-  });
+  function scrollToIndex(index, smooth = true) {
+    slider.scrollTo({
+      left: getSlidePosition(index),
+      behavior: smooth ? 'smooth' : 'auto'
+    });
+  }
 
-  // Reset logic after transition
+  function nextSlide() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+
+    currentIndex++;
+    scrollToIndex(currentIndex, true);
+
+    setTimeout(() => {
+      // If we've scrolled past the original slides into the appended clones
+      if (currentIndex >= originalCount * 2) {
+        // Jump back to the corresponding original slide instantly
+        currentIndex = originalCount;
+        scrollToIndex(currentIndex, false);
+      }
+      isTransitioning = false;
+    }, 500);
+  }
+
+  function handleManualScroll() {
+    if (isTransitioning) return;
+
+    const scrollLeft = slider.scrollLeft;
+    const firstRealSlidePos = getSlidePosition(originalCount);
+    const lastRealSlidePos = getSlidePosition(originalCount * 2 - 1);
+    const prependedSlidesEndPos = getSlidePosition(originalCount - 1);
+
+    // If scrolled into prepended clones area
+    if (scrollLeft < firstRealSlidePos - slider.clientWidth / 2) {
+      // Calculate which clone we're at and jump to corresponding real slide
+      const slideWidth = allSlides[0].offsetWidth + 32; // 32 = gap
+      const overscroll = firstRealSlidePos - scrollLeft;
+      const slidesFromStart = Math.floor(overscroll / slideWidth);
+      currentIndex = originalCount * 2 - 1 - slidesFromStart;
+      scrollToIndex(currentIndex, false);
+    }
+    // If scrolled into appended clones area beyond the real slides
+    else if (scrollLeft > lastRealSlidePos + slider.clientWidth / 2) {
+      currentIndex = originalCount;
+      scrollToIndex(currentIndex, false);
+    }
+  }
+
+  // Initialize: scroll to first real slide
   setTimeout(() => {
-    // If we are overlapping the original set with clones
-    if (currentSlide >= originalCount) {
-      // Calculate where we are relative to the clones
-      const relativeIndex = currentSlide % originalCount;
+    scrollToIndex(currentIndex, false);
+    highlightCenterSlide();
+  }, 100);
 
-      // Instant jump back to the original slide
-      currentSlide = relativeIndex;
+  // Sync active class on scroll
+  slider.addEventListener('scroll', highlightCenterSlide);
+  slider.addEventListener('scrollend', handleManualScroll);
 
-      slider.scrollTo({
-        left: getCenterPosition(allSlides[currentSlide]),
-        behavior: 'auto' // 'auto' is instant in most browsers vs 'smooth'
-      });
-    }
-    isTransitioning = false;
-  }, 600); // Match CSS transition time
+  function startAutoScroll() {
+    clearInterval(autoScrollInterval);
+    autoScrollInterval = setInterval(nextSlide, intervalTime);
+  }
+
+  startAutoScroll();
+
+  // Pause on interact
+  slider.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
+  slider.addEventListener('touchstart', () => clearInterval(autoScrollInterval));
+
+  slider.addEventListener('mouseleave', startAutoScroll);
+  slider.addEventListener('touchend', startAutoScroll);
 }
-
-function startAutoScroll() {
-  clearInterval(autoScrollInterval); // Prevent duplicates
-  autoScrollInterval = setInterval(nextSlide, intervalTime);
-}
-
-startAutoScroll();
-
-// Pause on interact
-slider.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
-slider.addEventListener('touchstart', () => clearInterval(autoScrollInterval)); // Mobile support
-
-slider.addEventListener('mouseleave', startAutoScroll);
-slider.addEventListener('touchend', startAutoScroll);
-
-
