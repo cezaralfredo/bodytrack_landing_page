@@ -103,6 +103,17 @@ button {
     filter: brightness(1.1);
 }
 
+.pricing-disclaimer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 2rem;
+    font-style: italic;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .btn-secondary {
     background-color: transparent;
     border: 2px solid var(--color-secondary);
